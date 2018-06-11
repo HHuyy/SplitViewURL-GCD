@@ -28,12 +28,15 @@ class ViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
+        let queue = DispatchQueue(label: "")
         if let url = URL(string: (photo?.picture)!){
-            do {
-                let data = try Data(contentsOf: url)
-                self.imageView.image = UIImage(data: data)
-            }catch let error {
-                print("Error : \(error.localizedDescription)")
+            queue.sync {
+                do {
+                    let data = try Data(contentsOf: url)
+                    self.imageView.image = UIImage(data: data)
+                }catch let error {
+                    print("Error : \(error.localizedDescription)")
+                }
             }
         }
     }
