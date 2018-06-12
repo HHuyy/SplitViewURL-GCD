@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-//    let imageCache = NSCache<NSString, UIImage>()
+    var dispatchWorkItem: DispatchWorkItem?
     
     var photo: Photo? {
         didSet {
@@ -30,25 +30,42 @@ class ViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
-        if let url = URL(string: (photo?.picture)!){
-            DispatchQueue.main.async {
-                do {
-                    let data = try Data(contentsOf: url)
-                    self.imageView.image = UIImage(data: data)
-                }catch let error {
-                    print("Error : \(error.localizedDescription)")
+        downloadImage(from: (photo?.picture)!) { (image) in
+            self.imageView.image = image
+        }
+//        if let url = URL(string: (photo?.picture)!){
+//            DispatchQueue.main.async {
+//                do {
+//                    let data = try Data(contentsOf: url)
+//                    self.imageView.image = UIImage(data: data)
+//                }catch let error {
+//                    print("Error : \(error.localizedDescription)")
+//                }
+//            }
+//        }
+    }
+    
+    func downloadImage(from urlString: String, completedHandler: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else { return }
+        var image: UIImage?
+        dispatchWorkItem = DispatchWorkItem(block: {
+            if let cache = CacheImage.images.object(forKey: url.absoluteString as NSString) as? UIImage {
+                image = cache
+            } else {
+                if let data = try? Data(contentsOf: url) {
+                    image = UIImage(data: data)
+                    CacheImage.images.setObject(image!, forKey: url.absoluteString as NSString, cost: data.count)
                 }
+            }
+        })
+        DispatchQueue.global().async {
+            self.dispatchWorkItem?.perform()
+            DispatchQueue.main.async {
+                completedHandler(image)
             }
         }
     }
-//    func downloadImage(url: URL, completion: @escaping (_ image: UIImage?, _ error: Error?) -> Void) {
-//        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
-//            completion(cachedImage, nil)
-//        } else {
-//
-//        }
-//    }
-//
+    
 }
 
 extension ViewController: PhotoSelectionDelegate {

@@ -15,6 +15,7 @@
 		AA39EFCD20CB840D00AFF833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA39EFCB20CB840D00AFF833 /* LaunchScreen.storyboard */; };
 		AA39EFD520CB849C00AFF833 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EFD420CB849C00AFF833 /* TableViewController.swift */; };
 		AA39EFD720CB892800AFF833 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA39EFD620CB892700AFF833 /* Photo.swift */; };
+		AA67E69E20CF71DF004C4668 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67E69D20CF71DF004C4668 /* CacheImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AA39EFCE20CB840D00AFF833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA39EFD420CB849C00AFF833 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AA39EFD620CB892700AFF833 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		AA67E69D20CF71DF004C4668 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				AA39EFBF20CB840D00AFF833 /* AppDelegate.swift */,
 				AA39EFD420CB849C00AFF833 /* TableViewController.swift */,
 				AA39EFC120CB840D00AFF833 /* ViewController.swift */,
+				AA67E69D20CF71DF004C4668 /* CacheImage.swift */,
 				AA39EFD620CB892700AFF833 /* Photo.swift */,
 				AA39EFC320CB840D00AFF833 /* Main.storyboard */,
 				AA39EFC920CB840D00AFF833 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA67E69E20CF71DF004C4668 /* CacheImage.swift in Sources */,
 				AA39EFC220CB840D00AFF833 /* ViewController.swift in Sources */,
 				AA39EFC820CB840D00AFF833 /* SplitViewURL_GCD.xcdatamodeld in Sources */,
 				AA39EFC020CB840D00AFF833 /* AppDelegate.swift in Sources */,
