@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+//    let imageCache = NSCache<NSString, UIImage>()
+    
     var photo: Photo? {
         didSet {
             refreshUI()
@@ -28,9 +30,8 @@ class ViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
-        let queue = DispatchQueue(label: "")
         if let url = URL(string: (photo?.picture)!){
-            queue.sync {
+            DispatchQueue.main.async {
                 do {
                     let data = try Data(contentsOf: url)
                     self.imageView.image = UIImage(data: data)
@@ -40,7 +41,14 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+//    func downloadImage(url: URL, completion: @escaping (_ image: UIImage?, _ error: Error?) -> Void) {
+//        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
+//            completion(cachedImage, nil)
+//        } else {
+//
+//        }
+//    }
+//
 }
 
 extension ViewController: PhotoSelectionDelegate {
