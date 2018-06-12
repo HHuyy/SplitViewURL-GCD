@@ -21,12 +21,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5R6-gq-cNb">
                                 <rect key="frame" x="16" y="74" width="343" height="583"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-6h-2J5">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5R6-gq-cNb" firstAttribute="top" secondItem="QPZ-sW-R8h" secondAttribute="top" constant="10" id="B7B-oR-wq9"/>
+                            <constraint firstItem="qTM-6h-2J5" firstAttribute="centerY" secondItem="tiK-XF-uaV" secondAttribute="centerY" id="Yrt-Dq-PO6"/>
                             <constraint firstItem="QPZ-sW-R8h" firstAttribute="bottom" secondItem="5R6-gq-cNb" secondAttribute="bottom" constant="10" id="dIc-gA-yS5"/>
                             <constraint firstItem="QPZ-sW-R8h" firstAttribute="trailing" secondItem="5R6-gq-cNb" secondAttribute="trailing" constant="16" id="rqA-gn-gID"/>
+                            <constraint firstItem="qTM-6h-2J5" firstAttribute="centerX" secondItem="tiK-XF-uaV" secondAttribute="centerX" id="td6-v1-Kuq"/>
                             <constraint firstItem="5R6-gq-cNb" firstAttribute="leading" secondItem="QPZ-sW-R8h" secondAttribute="leading" constant="16" id="x4n-sI-DCp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QPZ-sW-R8h"/>
@@ -34,6 +39,7 @@
                     <navigationItem key="navigationItem" id="6AR-8A-3sa"/>
                     <connections>
                         <outlet property="imageView" destination="5R6-gq-cNb" id="aPI-b3-mSc"/>
+                        <outlet property="spinner" destination="qTM-6h-2J5" id="Drx-XP-NI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA9-F5-ZqA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     var dispatchWorkItem: DispatchWorkItem?
     
@@ -30,9 +31,13 @@ class ViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
+        spinner.startAnimating()
         downloadImage(from: (photo?.picture)!) { (image) in
             self.imageView.image = image
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
         }
+        spinner.isHidden = false
 //        if let url = URL(string: (photo?.picture)!){
 //            DispatchQueue.main.async {
 //                do {
